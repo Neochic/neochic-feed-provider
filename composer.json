@@ -1,0 +1,13 @@
+{
+    "name": "neochic/feed-provider",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Franz-R. Reinhart",
+            "email": "franz@neochic.de"
+        }
+    ],
+    "require": {
+        "simplepie/simplepie": "^1.5"
+    }
+}
