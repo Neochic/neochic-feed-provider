@@ -9,5 +9,10 @@
     ],
     "require": {
         "simplepie/simplepie": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neochic\\FeedProvider\\": "./"
+        }
     }
 }
