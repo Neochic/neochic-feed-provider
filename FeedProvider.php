@@ -21,7 +21,7 @@ class FeedProvider {
     public function getFacebookFeed($fbProfileId, $appId, $appSecret, $amount = 3, $debug = false, $cache = true) {
         $cacheFile = $this->getTmpDir() . '/ncfp_facebook_feed_' . $appId . '.json';
         if ($cache && is_file($cacheFile)) {
-            $data = json_decode($this->fileGetContentsCurl($cacheFile, array(), $debug));
+            $data = json_decode(file_get_contents($cacheFile));
             if ($data->timestamp > time() - 3600) {
                 return $data->stream;
             }
@@ -57,7 +57,7 @@ class FeedProvider {
 
                     if (isset($item->object_id)) {
                         $url = "https://graph.facebook.com/v3.0/" . $item->object_id . "?". $token . "&fields=format";
-                        $objectFormatFeed = json_decode($this->fileGetContentsCurl($url));
+                        $objectFormatFeed = json_decode($this->fileGetContentsCurl($url, array(), $debug));
                         if ($objectFormatFeed && !empty($objectFormatFeed->format)) {
                             $best = null;
                             foreach ($objectFormatFeed->format as $format) {
