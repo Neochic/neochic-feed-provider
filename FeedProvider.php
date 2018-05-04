@@ -115,8 +115,8 @@ class FeedProvider {
             CURLOPT_TIMEOUT => 20, //timeout after 20 secs ..
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_FOLLOWLOCATION => 1,
-            CURLOPT_SSL_VERIFYPEER => $debug ? 0 : 1,
-            CURLOPT_SSL_VERIFYHOST => $debug ? 0 : 1,
+            CURLOPT_SSL_VERIFYPEER => $debug ? 0 : 2,
+            CURLOPT_SSL_VERIFYHOST => $debug ? 0 : 2,
             CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9'
         );
         $curlopt = array(CURLOPT_URL => $url) + $curlopt + $default_curlopt;
