@@ -31,7 +31,7 @@ class FeedProvider {
         $token = "access_token=" . $appId . "|" . $appSecret;
 
         try {
-            $url = "https://graph.facebook.com/" . $fbProfileId . "/posts?". $token . "&fields=created_time,message,from,to,link,object_id,status_type,picture,full_picture";
+            $url = "https://graph.facebook.com/v3.0/" . $fbProfileId . "/posts?". $token . "&fields=created_time,message,from,to,link,object_id,status_type,picture,full_picture";
             ini_set('user_agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9');
             $facebookFeed = json_decode($this->fileGetContentsCurl($url, array(), $debug));
 
@@ -56,7 +56,7 @@ class FeedProvider {
                     $item->link = "https://www.facebook.com/".$fbProfileId."/posts/".$postId;
 
                     if (isset($item->object_id)) {
-                        $url = "https://graph.facebook.com/" . $item->object_id . "?". $token . "&fields=format";
+                        $url = "https://graph.facebook.com/v3.0/" . $item->object_id . "?". $token . "&fields=format";
                         $objectFormatFeed = json_decode($this->fileGetContentsCurl($url));
                         if ($objectFormatFeed && !empty($objectFormatFeed->format)) {
                             $best = null;
